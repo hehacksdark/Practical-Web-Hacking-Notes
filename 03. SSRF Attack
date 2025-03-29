@@ -1,1 +1,65 @@
+# Server-Side Request Forgery (SSRF)
 
+## Definition
+Server-Side Request Forgery (SSRF) is a vulnerability that allows an attacker to make the server initiate requests to arbitrary domains or services, often without the server’s owner or the victim's knowledge.
+
+## How SSRF Works
+1. The attacker provides a URL or address that the vulnerable server processes.
+2. The vulnerable application sends a request using server-side resources.
+3. The attacker manipulates the request to target internal or external sensitive resources.
+
+## Types of SSRF
+- **Internal SSRF:** Targets internal network resources like APIs and databases.
+- **Blind SSRF:** No direct response, but impacts can be inferred.
+- **External SSRF:** Targets third-party services or external websites.
+
+## Common Targets
+- **Localhost/Internal Services:** Accessing metadata services, admin panels, etc.
+- **Sensitive Files:** Retrieving configuration files such as `/etc/passwd`.
+- **External Resources:** Sending requests to third-party services.
+
+## Impact of SSRF
+- Internal network discovery.
+- Accessing restricted resources.
+- Remote Code Execution (RCE).
+- Bypassing security controls.
+- Exposing sensitive data.
+- Denial of Service (DoS).
+
+## Examples of SSRF Attacks
+- **Accessing Internal Services:** Requesting `http://127.0.0.1:8080` to access internal services.
+- **Cloud Metadata Exploitation:** Fetching AWS credentials via `http://169.254.169.254/latest/meta-data/`.
+- **File Inclusion:** Using `file://` URLs to read system files.
+
+## Mitigation Strategies
+- **Input Validation:** Allow only whitelisted URLs.
+- **Network Segmentation:** Prevent external access to internal resources.
+- **Disable Unnecessary Features:** Block local IP access if not needed.
+- **Use Proxies/Gateways:** Filter and control outgoing requests.
+- **Access Controls:** Restrict internal service access.
+- **Logging & Monitoring:** Detect abnormal behavior.
+
+## Summary
+SSRF is a critical web security vulnerability that allows an attacker to exploit a web application's ability to make requests. Implementing strict validation, access controls, and monitoring can help prevent SSRF attacks.
+
+---
+
+### **SSRF Lab Writeups (SSRF-Lab-1.md)**
+Inside `SSRF/Labs/SSRF-Lab-1.md`:
+```markdown
+# SSRF Lab - Example 1 (PortSwigger)
+
+## Lab Description
+This lab demonstrates how an attacker can exploit SSRF to access internal services.
+
+## Steps to Exploit
+1. Identify a feature that takes a URL as input (e.g., fetching user avatars).
+2. Modify the URL parameter to target an internal IP, e.g., `http://127.0.0.1/admin`.
+3. Observe the response and extract sensitive information.
+
+## Mitigation
+- Implement URL allowlisting.
+- Restrict internal IP access.
+- Use a secure proxy to handle requests.
+
+---
