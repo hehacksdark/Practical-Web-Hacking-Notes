@@ -1,7 +1,7 @@
 # Practical-Web-Hacking-Notes  
 Authentication  
 Access Control  
-[SSRF Attack Notes](../03.%20SSRF%20Attack.md)    
+[SSRF Attack Notes]([../03.%20SSRF%20Attack.md](https://github.com/hehacksdark/Practical-Web-Hacking-Notes/blob/main/03.%20SSRF%20Attack.md)  
 SQL Injection  
 File Inclusion  
 XXE XML External Entity Injection  
