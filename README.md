@@ -1,7 +1,7 @@
 # Practical-Web-Hacking-Notes  
 Authentication  
 Access Control  
-SSRF Server Side Request Forgery  
+[◀ Back to SSRF Attack](../03.%20SSRF%20Attack.md)  
 SQL Injection  
 File Inclusion  
 XXE XML External Entity Injection  
